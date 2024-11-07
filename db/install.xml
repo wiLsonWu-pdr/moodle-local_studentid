@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/studentid/db" VERSION="2023110700" COMMENT="Database changes for local_studentid plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moodle.org/xsd/xmlschema.xsd">
+    <TABLES>
+        <TABLE NAME="studentid" COMMENT="User table">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="studentid" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" DEFAULT="" COMMENT="Student ID"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+        </TABLE>
+    </TABLES>
+</XMLDB>
