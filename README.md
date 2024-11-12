@@ -1,4 +1,4 @@
-This is a plugin based on the moodle learning platform, which is used to automatically generate a student ID when creating a user, and allows the user to freely set the prefix of the student ID and whether to use the student ID as the username for the user's login.
+# This is a plugin based on the moodle learning platform, which is used to automatically generate a student ID when creating a user, and allows the user to freely set the prefix of the student ID and whether to use the student ID as the username for the user's login.
 
 ## **You can clone this folder into your_moodle_folder/local and open your Moodle website to install it.**
 
