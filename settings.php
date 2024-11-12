@@ -24,8 +24,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 
-/*$url = new moodle_url( '/local/studentid/index.php' );
-$ADMIN->add( 'IomadReports', new admin_externalpage('repcoursecompletion',
-                                                       get_string('repcoursecompletion',
-                                                       'local_report_chart'), $url, 'local/report_chart:view'));
-*/
+$url = new moodle_url( '/local/studentid/index.php' );
+$ADMIN->add( 'localplugins', new admin_externalpage('studentid',
+                                                       get_string('student_id_generate_setting',
+                                                       'local_studentid'), $url, 'local/studentid:manage'));
