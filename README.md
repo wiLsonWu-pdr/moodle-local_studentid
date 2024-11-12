@@ -8,13 +8,21 @@ suppose prefix = 'stu', userid in the database is 33, create date is 2024/11/12,
 
 Here is the demo screen capture:
 
+1.
 ![image](https://github.com/user-attachments/assets/a550ba33-46e4-4e63-8566-a8c6925a84c4)
 
+2.
 ![image](https://github.com/user-attachments/assets/e671c071-ead3-4891-b36b-633255b66aa8)
+
+3.
 ![image](https://github.com/user-attachments/assets/3fef86a0-992e-423e-9165-aad19506cb9a)
+
+4.
 ![image](https://github.com/user-attachments/assets/cc71c7da-e679-429e-afa3-ded21e40448c)
+
+5.
 ![image](https://github.com/user-attachments/assets/413a53ee-712c-4642-ba12-ecc8d0782665)
 
 
-Then you can see the new user's username become the auto-generated student ID
+6. Then you can see the new user's username become the auto-generated student ID
 ![image](https://github.com/user-attachments/assets/31798e45-f5cc-4b70-ab9a-ed4d28d6802a)
