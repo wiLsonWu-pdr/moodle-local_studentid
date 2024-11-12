@@ -11,21 +11,17 @@ admin_externalpage_setup('managelocalplugins');
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('student_id_generate_setting', 'local_studentid'));
 
-// 如果请求方法为 POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $use_student_id = isset($_POST['use_student_id']) ? true : false;
     
-    // 获取用户输入的字符串，如果为空则使用默认值 's'
     $student_id_format = isset($_POST['student_id_format']) ? trim($_POST['student_id_format']) : 's';
 
-    // 保存设置到用户偏好中
     set_user_preference('use_student_id', $use_student_id);
     set_user_preference('student_id_format', $student_id_format);
 
     echo $OUTPUT->notification(get_string('setting_have_been_saved', 'local_studentid'), 'notifymessage');
 }
 
-// 获取用户偏好设置
 $use_student_id = get_user_preferences('use_student_id', false);
 $student_id_format = get_user_preferences('student_id_format', 'student_');
 
