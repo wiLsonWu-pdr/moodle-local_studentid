@@ -15,10 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package   local_report_completion
- * @copyright 2021 Derick Turner
- * @author    Derick Turner
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   local_studentid
+ * @copyright 2024 WiLsonWu
+ * @author    WiLsonWu
  */
 
 $capabilities = array(
