@@ -8,6 +8,7 @@
  */
 
 $plugin->release  = '4.2.6 (Build: 20240212)'; // Human-friendly version name
-$plugin->version  = 2021021500;
+$plugin->version  = 2024111200;
 $plugin->requires = 2019052000;
 $plugin->component  = 'local_studentid';
+$plugin->maturity = MATURITY_STABLE;
