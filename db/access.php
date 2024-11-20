@@ -13,32 +13,35 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
+//
 /**
+ * Access definitions for the local_studentid plugin.
+ *
  * @package   local_studentid
  * @copyright 2024 WiLsonWu
- * @author    WiLsonWu
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$capabilities = array(
+defined('MOODLE_INTERNAL') || die();
 
-    'local/studentid:manage' => array(
+$capabilities = [
+    'local/studentid:manage' => [
         'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
+        'archetypes' => [
             'manager' => CAP_ALLOW,
-        ),
-    ),
+        ],
+    ],
 
-    'local/studentid:use' => array(
+    'local/studentid:use' => [
         'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
+        'archetypes' => [
             'manager' => CAP_ALLOW,
             'user' => CAP_ALLOW,
             'teacher' => CAP_ALLOW,
-        ),
-    )
-);
+        ],
+    ],
+];

@@ -13,17 +13,17 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
+//
 /**
+ * Settings page for the local_studentid plugin.
+ *
  * @package   local_studentid
  * @copyright 2024 WiLsonWu
- * @author    WiLsonWu
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+defined('MOODLE_INTERNAL') || die();
 
-
-$url = new moodle_url( '/local/studentid/index.php' );
-$ADMIN->add( 'localplugins', new admin_externalpage('studentid',
-                                                       get_string('student_id_generate_setting',
-                                                       'local_studentid'), $url, 'local/studentid:manage'));
+$url = new moodle_url('/local/studentid/index.php');
+$ADMIN->add('localplugins', new admin_externalpage('studentid',
+    get_string('student_id_generate_setting', 'local_studentid'), $url, 'local/studentid:manage'));
