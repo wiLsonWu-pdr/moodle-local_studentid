@@ -28,16 +28,18 @@ require_once(dirname(__FILE__).'/../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 require_once($CFG->libdir.'/tablelib.php');
 
-require_login();
+require_login(); // 确保用户已登录
+require_capability('local/studentid:manage', context_system::instance()); // 检查用户权限
 
 admin_externalpage_setup('managelocalplugins');
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('student_id_generate_setting', 'local_studentid'));
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $useStudentId = isset($_POST['use_student_id']) ? true : false;
-    $studentIdFormat = isset($_POST['student_id_format']) ? trim($_POST['student_id_format']) : 's';
+// 处理表单提交
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && confirm_sesskey()) {
+    $useStudentId = optional_param('use_student_id', false, PARAM_BOOL);
+    $studentIdFormat = optional_param('student_id_format', 's', PARAM_TEXT);
 
     set_user_preference('use_student_id', $useStudentId);
     set_user_preference('student_id_format', $studentIdFormat);
@@ -45,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo $OUTPUT->notification(get_string('setting_have_been_saved', 'local_studentid'), 'notifymessage');
 }
 
+// 获取用户偏好设置
 $useStudentId = get_user_preferences('use_student_id', false);
 $studentIdFormat = get_user_preferences('student_id_format', 'student_');
 
