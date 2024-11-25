@@ -14,7 +14,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->release  = '4.2.6 (Build: 20240212)'; // Human-friendly version name.
-$plugin->version  = 2024111202; // Plugin version.
+$plugin->version  = 2024111203; // Plugin version.
 $plugin->requires = 2019052000; // Required Moodle version.
 $plugin->component  = 'local_studentid'; // Plugin component name.
 $plugin->maturity = MATURITY_STABLE; // Plugin maturity status.
