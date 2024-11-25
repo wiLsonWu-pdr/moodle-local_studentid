@@ -1,63 +1,77 @@
 <?php
 // This file is part of Moodle - http://moodle.org/
-//
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-//
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
-//
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-//
+// along with Moodle. If not, see <http://www.gnu.org/licenses/>.
+
 /**
+ * Observer class for handling user creation events.
+ *
+ * This class listens for user creation events and manages student IDs.
+ *
  * @package   local_studentid
  * @copyright 2024 WiLsonWu
- * @author    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/../lib.php');
 
-class local_studentid_observer {
+/**
+ * Class localStudentIdObserver
+ *
+ * Handles events related to student ID management.
+ */
+class localStudentIdObserver {
 
-    public static function user_created(\core\event\user_created $event) {
+    /**
+     * User created event handler.
+     *
+     * This method is triggered when a user is created.
+     *
+     * @param \core\event\user_created $event Event object.
+     * @return void
+     */
+    public static function userCreated(\core\event\user_created $event) {
         global $DB;
 
-        // get user record
+        // Get user record.
         $user = $DB->get_record('user', ['id' => $event->objectid], '*', MUST_EXIST);
         
-        // get student ID setting
-        $use_student_id = get_user_preferences('use_student_id', false);
+        // Get student ID setting.
+        $useStudentId = get_user_preferences('useStudentId', false);
         
-        // get student ID format
-        $student_id_format = get_user_preferences('student_id_format', 'student_');
+        // Get student ID format.
+        $studentIdFormat = get_user_preferences('studentIdFormat', 'student_');
         
-        // get account create date
-        $created_date = $user->timecreated;
+        // Get account create date.
+        $createdDate = $user->timecreated;
 
-        // generate student ID
-        $student_id = generate_student_id($student_id_format, $user->id, $created_date);
+        // Generate student ID.
+        $studentId = generate_student_id($studentIdFormat, $user->id, $createdDate);
 
-        // update username to be student ID
-        $user->username = $student_id;
+        // Update username to be student ID.
+        $user->username = $studentId;
 
         $transaction = $DB->start_delegated_transaction();
         try {
-            // according to user setting to decide update username or not
-            if ($use_student_id) {
+            // Update username based on user setting.
+            if ($useStudentId) {
                 $DB->update_record('user', $user);
             }
 
-            // insert record to studentid table
+            // Insert record to studentid table.
             $record = new stdClass();
             $record->userid = $user->id;
-            $record->studentid = $student_id;
+            $record->studentid = $studentId;
             $DB->insert_record('studentid', $record);
             
             $transaction->allow_commit();
